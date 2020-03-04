@@ -300,7 +300,7 @@ let geoMapClicks2=0
             
                {this.state.gpopup && <Popup key={this.state.key} position={this.state.position} onClose={()=>{this.setState({popup:false})}}>
                <div style={{width:320+'px',height:240+'px'}}>
-               {(this.state.gLoading)?(<Barplot X={this.state.genX} Y={this.state.Y} title={this.state.title}/>):(<Spinner accessibilityLabel="Spinner example" size="large" color="teal" />)}
+               {(this.state.gLoading)?(<Barplot X={this.state.genX} Y={this.state.genY} title={this.state.title}/>):(<Spinner accessibilityLabel="Spinner example" size="large" color="teal" />)}
                   </div>
                 </Popup>
                 
