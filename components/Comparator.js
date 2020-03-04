@@ -35,7 +35,7 @@ class Comparator extends React.Component{
     }
 
     componentDidMount() {
-        fetch("http://localhost:5000/rest/collector/")
+        fetch("http://vav.research.cs.dal.ca/municipalitybackend/rest/collector/")
           .then(res => res.json())
           .then(
             (result) => {
@@ -97,7 +97,7 @@ class Comparator extends React.Component{
             var param={};
             param['index']=tempArr;
             console.log(param);
-            axios.get('http://localhost:5000/rest/comparisor/',{params:tempArr})
+            axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/comparisor/',{params:tempArr})
             .then(result => {
                  console.log(result.data.result);
                  this.setState({
@@ -116,7 +116,7 @@ class Comparator extends React.Component{
         par['value']=e.target.textContent;
        
         console.log(par);
-        axios.get('http://localhost:5000/rest/pie/',{params:par})
+        axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/pie/',{params:par})
         .then(result => {
           this.setState({
             weight1: result.data.pie['weight'],
@@ -131,7 +131,7 @@ class Comparator extends React.Component{
 
         this.stylesetter(e);   var par={};
         par['value']=e.target.textContent;
-        axios.get('http://localhost:5000/rest/pie/',{params:par})
+        axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/pie/',{params:par})
         .then(result => {
           this.setState({
             weight2: result.data.pie['weight'],

@@ -130,7 +130,7 @@ let geoMapClicks2=0
         this.setState({
            cmpload:true
         })
-        axios.get('http://localhost:5000/rest/explainer/',{params:data})
+        axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/explainer/',{params:data})
         .then(result => {
 
           

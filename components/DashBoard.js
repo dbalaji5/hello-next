@@ -156,7 +156,7 @@ class DashBoard extends React.Component{
           ajaxLoading2:true
       })
       if(this.state.method==='lc'){
-        axios.get('http://localhost:5000/rest/'+cat+'/',{params:res})
+        axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/'+cat+'/',{params:res})
         .then(result => {
           //console.log(result.data['resu2']);
           var res=result.data['sums'].sort((a,b) => {
@@ -187,7 +187,7 @@ class DashBoard extends React.Component{
       else{
         console.log("in crimepca method")
 
-        axios.get('http://localhost:5000/rest/crimepca/',{params:res})
+        axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/crimepca/',{params:res})
         .then(result => {
           //console.log(result.data['resu2']);
           var res=result.data['sums'].sort((a,b) => {
@@ -237,7 +237,7 @@ class DashBoard extends React.Component{
       this.setState({
         ajaxLoading:true
       })
-      axios.get('http://localhost:5000/rest/'+cat1+'/',{params:result})
+      axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/'+cat1+'/',{params:result})
         .then(result => {
 
           var res=result.data['sums'].sort((a,b) => {
