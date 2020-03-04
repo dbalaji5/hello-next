@@ -1,0 +1,1 @@
+{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[21],{cKRR:function(t,e,n){\"use strict\";n.r(e),n.d(e,\"default\",(function(){return u}));var a=n(\"q1tI\"),i=n.n(a),r=n(\"JOtS\"),o=n.n(r),c=i.a.createElement;function u(t){return c(o.a,{data:[{type:\"bar\",x:t.X,y:t.Y,marker:{color:\"#74C67A\",line:{width:2.5}}}],layout:{width:320,height:240,title:t.title}})}}}]);"}
