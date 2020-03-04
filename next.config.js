@@ -5,14 +5,14 @@ const webpack = require('webpack');
 const prod = process.env.NODE_ENV === 'production';
 console.log(process.env.NODE_ENV);
 
-const prodip = "http://vav.research.cs.dal.ca/hrm/";
+const prodip = "http://vav.research.cs.dal.ca/municipality/";
 const devip = "http://localhost:3000/";
 const apikey= JSON.stringify(process.env.SHOPIFY_API_KEY);
 
 
 module.exports = withCSS({
 
-     assetPrefix: prod? '/hrm/':'',
+     assetPrefix: prod? '/municipality/':'',
      exportTrailingSlash: true,
      exportPathMap: function() {
      	return {
