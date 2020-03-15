@@ -13,7 +13,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    fetch("http://vav.research.cs.dal.ca//municipalitybackend/rest/")
+    fetch("http://vav.research.cs.dal.ca/municipalitybackend/rest/")
       .then(res => res.json())
       .then(
         (result) => {

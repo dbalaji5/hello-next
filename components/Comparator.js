@@ -29,7 +29,11 @@ class Comparator extends React.Component{
             pieLoading1:false,
             pieLoading2:false,
             compres:{},
-            loading:false
+            indres1:{},
+            indres2:{},
+            loading:false,
+            indname1:'',
+            indname2:''
         }
 
     }
@@ -116,12 +120,18 @@ class Comparator extends React.Component{
         par['value']=e.target.textContent;
        
         console.log(par);
+        this.setState({
+            loading:true,
+            indname1:par['value']
+        })
         axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/pie/',{params:par})
         .then(result => {
           this.setState({
             weight1: result.data.pie['weight'],
             variable1: result.data.pie['variable'],
-            pieLoading1:true
+            indres1: result.data.index,
+            pieLoading1:true,
+            loading:false
           });
           this.comparator(par['value'],'A');
         })
@@ -131,12 +141,18 @@ class Comparator extends React.Component{
 
         this.stylesetter(e);   var par={};
         par['value']=e.target.textContent;
+        this.setState({
+            loading:true,
+            indname2:par['value']
+        })
         axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/pie/',{params:par})
         .then(result => {
           this.setState({
             weight2: result.data.pie['weight'],
             variable2: result.data.pie['variable'],
-            pieLoading2:true
+            indres2:result.data.index,
+            pieLoading2:true,
+            loading:false
           });
           this.comparator(par['value'],'B');
         })
@@ -198,7 +214,7 @@ class Comparator extends React.Component{
 
                         <Layout.Section oneHalf>
                             <Card title="Maps">
-                                <MapsComp data={this.state.compres} loading={this.state.loading}/>
+                                <MapsComp data={this.state.compres} indname1={this.state.indname1} indname2={this.state.indname2} idata1={this.state.indres1} idata2={this.state.indres2} loading={this.state.loading}/>
                             </Card>
                         </Layout.Section>
 

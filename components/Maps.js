@@ -5,7 +5,8 @@ import diss from '../data/Dissemination.json';
 import '@shopify/polaris/styles.css';
 import {Card,Layout,Spinner} from '@shopify/polaris';
 import axios from 'axios';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import './Maps.css';
 const Barplot = dynamic(import('./BarPlot'),{
   ssr:false
 })
@@ -95,19 +96,18 @@ let geoMapClicks2=0
      getColor = (val) => {
 
 
-      return val>=-1 && val < -0.75? '#a50026':
-             val>=-0.75 && val < -0.6 ? '#d73027':
-             val>=-0.6 && val < -0.4 ? '#f46d43':
-             val>=-0.4 && val < -0.2 ? '#fdae61':
-             val>=-0.2 && val < 0 ? '#fee08b':
-             val>=0.01   &&  val <0.1 ? '#d9ef8b':
-             val>=0.1 && val < 0.3 ? '#a6d96a':
-             val>=0.3 && val < 0.5 ? '#66bd63':
-             val>=0.5 && val < 0.75 ? '#1a9850':
-             val >= 0.75 && val <= 1 ? '#006837':
-             val>=0 && val <0.01 ? '#ffffff':
-                                   '#000000';
-
+      return val>=-1 && val < -0.8? '#a50026':
+                val>=-0.8 && val < -0.6 ? '#d73027':
+                val>=-0.6 && val < -0.4 ? '#f46d43':
+                val>=-0.4 && val < -0.2 ? '#fdae61':
+                val>=-0.2 && val < 0 ? '#fee08b':
+                val>=0.01   &&  val <0.2 ? '#d9ef8b':
+                val>=0.2 && val < 0.4 ? '#a6d96a':
+                val>=0.4 && val < 0.6 ? '#66bd63':
+                val>=0.6 && val < 0.8 ? '#1a9850':
+                val >= 0.8 && val <= 1 ? '#006837':
+                val>=0 && val <0.01 ? '#ffffff':
+                                    '#000000';
     };
 
     onEachFeature2 = (feature,layer) => {
@@ -128,7 +128,7 @@ let geoMapClicks2=0
         var data={}
         data['DAUID']=feature.properties.DAUID;
         this.setState({
-           cmpload:true
+           cmpload:false
         })
         axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/explainer/',{params:data})
         .then(result => {
@@ -237,6 +237,13 @@ let geoMapClicks2=0
                     weight:this.state.iweight[checkDauId]
                 });
             }
+            else{
+              return ({
+                 opacity:0,
+                 weight:0,
+                 fillOpacity:0
+              });
+            }
           //   else{
           //   return ({
                 
@@ -258,6 +265,13 @@ let geoMapClicks2=0
                 fillOpacity:0.3,
                 weight:this.state.iweight[checkDauId]
             });
+        }
+        else{
+          return ({
+             opacity:0,
+             weight:0,
+             fillOpacity:0
+          });
         }
   
       }
@@ -284,7 +298,11 @@ let geoMapClicks2=0
             
                 <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                // attribution= '&copy; 2020 &middot; <a href="https://maps.omniscale.com/">Omniscale</a> &middot; Map data: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 url="http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+                // url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
+                // url="http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png"
+                // url="https://maps.omniscale.net/v2/{id}/style.grayscale/{z}/{x}/{y}.png"
               />
              
               <LayersControl position="topright">
@@ -300,7 +318,7 @@ let geoMapClicks2=0
             
                {this.state.gpopup && <Popup key={this.state.key} position={this.state.position} onClose={()=>{this.setState({popup:false})}}>
                <div style={{width:320+'px',height:240+'px'}}>
-               {(this.state.gLoading)?(<Barplot X={this.state.genX} Y={this.state.genY} title={this.state.title}/>):(<Spinner accessibilityLabel="Spinner example" size="large" color="teal" />)}
+               {(this.state.gLoading)?(<Barplot X={this.state.genX} Y={this.state.genY} title={this.state.gtitle}/>):(<Spinner accessibilityLabel="Spinner example" size="large" color="teal" />)}
                   </div>
                 </Popup>
                 

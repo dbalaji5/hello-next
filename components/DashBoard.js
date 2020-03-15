@@ -42,7 +42,8 @@ class DashBoard extends React.Component{
              ajaxLoading2:true,
              indexWeight:{},
              method:'lc',
-             datequery:2005
+             datefrom:2005,
+             dateto:2017
         }
     }
 
@@ -142,8 +143,8 @@ class DashBoard extends React.Component{
       // console.log(res);
       var cat="index";
       if(this.state.category[0]=="crime"){
-        res['d1']=this.state.datequery+'/01/01'
-        res['d2']=this.state.datequery+'/12/31'
+        res['d1']=this.state.datefrom+'/01/01'
+        res['d2']=this.state.dateto+'/12/31'
       }
       if(this.state.category[0]==="incident"){
           cat="incident"
@@ -313,12 +314,18 @@ class DashBoard extends React.Component{
 
         this.setState({
 
-           datequery:value
+           datefrom:value
         })
         var res2={}
-        res2['d1']=this.state.datequery+'/01/01'
-        res2['d2']=this.state.datequery+'/12/31'
+        res2['d1']=this.state.datefrom+'/01/01'
+        res2['d2']=this.state.dateto+'/12/31'
         console.log(res2);
+    }
+    handleDate2= (value) => {
+      this.setState({
+          dateto:value
+      })
+      console.log(value);
     }
 
   render(){
@@ -336,8 +343,10 @@ class DashBoard extends React.Component{
         
         <Setting onClick={(value)=>this.setStat(value)}/>
         <MethodSetting onClick={(methodvalue)=>this.methodStat(methodvalue)}/>
-        <TextStyle variation="subdued">Date Period for Indicators</TextStyle>
+        <TextStyle variation="subdued">Date From</TextStyle>
         <Ranger min={2005} max={2017} onChange={(value)=>this.handleDateChange(value)}/>
+        <TextStyle variation="subdued">Date To</TextStyle>
+        <Ranger min={2005} max={2017} onChange={(value)=>this.handleDate2(value)} />
       </Card.Section>
       <Card.Section title="Items">
       <Scrollable shadow style={{height: '40vh'}}>
