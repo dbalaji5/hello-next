@@ -29,7 +29,7 @@ class MapsComp extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            data:[],
+            data:{},
             idata1:[],
             idata2:[],
             int1X:[],
@@ -103,43 +103,43 @@ class MapsComp extends React.Component{
         layer.on('click',(e)=>{
          
           if(this.state.iLoading){
-          var data={}
-          data['DAUID']=feature.properties.DAUID;
-          data['indexname1']=this.state.indname1;
-          data['indexname2']=this.state.indname2;
-          this.setState({
-             cmpload:false
-          })
-          axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/compareprop/',{params:data})
-          .then(result => {
-  
+                var data={}
+                data['DAUID']=feature.properties.DAUID;
+                data['indexname1']=this.state.indname1;
+                data['indexname2']=this.state.indname2;
+                this.setState({
+                    cmpload:false,
+                })
+                axios.get('http://vav.research.cs.dal.ca/municipalitybackend/rest/compareprop/',{params:data})
+                .then(result => {
+        
+                    
+                    var rX=result.data['indices']['indx1'];
+                    var rY=result.data['indices']['indy1'];
+                
+                    var iX=result.data['indices']['indx2'];
+                    var iY=result.data['indices']['indy2'];
+                
             
-            var rX=result.data['indices']['indx1'];
-            var rY=result.data['indices']['indy1'];
-           
-            var iX=result.data['indices']['indx2'];
-            var iY=result.data['indices']['indy2'];
-           
-       
-            this.setState(
-  
-              {
-                 int1X:rX, 
-                 int1Y:rY,
-                 int2X:iX,
-                 int2Y:iY,
-                 cmpload:true
-              }
-            )
-          });
-        }
-          this.setState({
-             ipopup:true,
-             iposition:e.latlng,
-             key:numMapClicks++,
-             ititle:feature.properties.DAUID
-          });
-      });
+                    this.setState(
+        
+                    {
+                        int1X:rX, 
+                        int1Y:rY,
+                        int2X:iX,
+                        int2Y:iY,
+                        cmpload:true
+                    }
+                    )
+                });
+            }
+            this.setState({
+                ipopup:true,
+                iposition:e.latlng,
+                key:numMapClicks++,
+                ititle:feature.properties.DAUID
+            });
+        });
     }
 
       
@@ -153,13 +153,20 @@ class MapsComp extends React.Component{
         var style = (feature) => {
             var checkDauId=feature.properties.DAUID;
             if(Object.keys(this.state.data).length>0){
+                if(checkDauId in this.state.data){
+                    return ({
+                        fillColor: this.getColor(this.state.data[checkDauId]),
+                        color:this.getColor(this.state.data[checkDauId]),
+                        opacity:1,
+                        fillOpacity:0.3,
+                        weight:0.5
+                    });
+                }
                 return ({
-                    fillColor: this.getColor(this.state.data[checkDauId]),
-                    color:this.getColor(this.state.data[checkDauId]),
-                    opacity:1,
-                    fillOpacity:0.3,
-                    weight:0.5
-                });
+                    opacity:0,
+                    weight:0,
+                    fillOpacity:0
+                 });
             }
             else{
                 return ({
