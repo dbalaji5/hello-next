@@ -313,13 +313,9 @@ class DashBoard extends React.Component{
     handleDateChange= (value) => {
 
         this.setState({
-
            datefrom:value
         })
-        var res2={}
-        res2['d1']=this.state.datefrom+'/01/01'
-        res2['d2']=this.state.dateto+'/12/31'
-        console.log(res2);
+       
     }
     handleDate2= (value) => {
       this.setState({
@@ -374,6 +370,11 @@ class DashBoard extends React.Component{
        </Scrollable>
       </Card.Section>
     </Card>
+    <Card title="Chart">
+      <Scrollable shadow style={{height: '32vh',width:'59vh'}}>
+      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onHover={(data)=>this.handleHover(data)}/>):(<p>Waiting for the load</p>)}
+      </Scrollable>
+      </Card>
     <Card title="Interpreters">
       <Card.Section>
         <Stack spacing="loose">
@@ -387,11 +388,7 @@ class DashBoard extends React.Component{
        </Scrollable>
       </Card.Section>
     </Card>
-      <Card title="Chart">
-      <Scrollable shadow style={{height: '32vh',width:'59vh'}}>
-      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onHover={(data)=>this.handleHover(data)}/>):(<p>Waiting for the load</p>)}
-      </Scrollable>
-      </Card>
+      
   </Stack>
   </Layout.Section>
   {/* <Maps genres={this.state.gresult} gendata={this.state.gdata} ajaxload={this.state.ajaxLoading} intres={this.state.iresult} intdata={this.state.idata}/> */}

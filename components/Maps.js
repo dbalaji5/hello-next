@@ -231,7 +231,7 @@ let geoMapClicks2=0
             if(this.state.gendata.length>0){
                 return ({
                     fillColor: this.getColor(this.state.genres[checkDauId]),
-                    color:this.getColor(this.state.genres[checkDauId]),
+                    color:(this.state.iweight[checkDauId]==1)?this.getColor(this.state.genres[checkDauId]):'#021092',
                     opacity:1,
                     fillOpacity:0.3,
                     weight:this.state.iweight[checkDauId]
@@ -260,7 +260,7 @@ let geoMapClicks2=0
         if(this.state.intdata.length>0){
             return ({
                 fillColor: this.getColor(this.state.intres[checkDauId]),
-                color:this.getColor(this.state.intres[checkDauId]),
+                color:(this.state.iweight[checkDauId]==1)?this.getColor(this.state.intres[checkDauId]):'#021092',
                 opacity:1,
                 fillOpacity:0.3,
                 weight:this.state.iweight[checkDauId]
