@@ -332,7 +332,7 @@ class DashBoard extends React.Component{
   <Layout>
   <Layout.Section secondary>
     
-    <Card title="Indicators" actions={[{content: 'Manage'}]}>
+    <Card title="Variables">
       <Card.Section>
         <TextStyle variation="subdued">Choose Indicators</TextStyle>
         
@@ -357,7 +357,7 @@ class DashBoard extends React.Component{
   </Layout.Section>
   <Layout.Section>
     <Stack>
-    <Card title="Selector">
+    <Card title="Composite Indicators">
       <Card.Section>
         <Stack spacing="loose">
         <Button primary onClick={this.generateArray}>Generate</Button>
@@ -370,12 +370,12 @@ class DashBoard extends React.Component{
        </Scrollable>
       </Card.Section>
     </Card>
-    <Card title="Chart">
+    <Card title="Rank Chart">
       <Scrollable shadow style={{height: '32vh',width:'59vh'}}>
-      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onHover={(data)=>this.handleHover(data)}/>):(<p>Waiting for the load</p>)}
+      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onHover={(data)=>this.handleHover(data)}/>):(<h1>Waiting for the selection</h1>)}
       </Scrollable>
       </Card>
-    <Card title="Interpreters">
+    <Card title="Explainers">
       <Card.Section>
         <Stack spacing="loose">
         <Button primary onClick={this.interpretArray}>Interpret</Button>
