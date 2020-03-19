@@ -1,7 +1,7 @@
 import React,{useCallback, useState}from 'react';
 import {Stack,RadioButton} from '@shopify/polaris';
 export default function MethodSetting(props) {
-  const [value, setValue] = useState('generate');
+  const [value, setValue] = useState('lc');
 
   const handleChange = useCallback(
     (_checked, newValue) => 
