@@ -8,7 +8,7 @@ export default function CompPlot(props) {
             {type: 'bar',
                     x: props.int1X,
                     y: props.int1Y,
-                    name: 'Index 1',
+                    name: 'Index A',
                     marker: {
                         color: '#000080',
                         line: {
@@ -20,7 +20,7 @@ export default function CompPlot(props) {
               type: 'bar',
               x: props.int2X,
               y: props.int2Y,
-              name: 'Index 2',
+              name: 'Index B',
               marker: {
                   color: '#0F52BA',
                   opacity: 0.4,

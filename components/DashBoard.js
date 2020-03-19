@@ -43,7 +43,9 @@ class DashBoard extends React.Component{
              indexWeight:{},
              method:'lc',
              datefrom:2005,
-             dateto:2017
+             dateto:2017,
+             ichecked:true,
+             echecked:false
         }
     }
 
@@ -178,7 +180,9 @@ class DashBoard extends React.Component{
                gdata:result.data['sums'],
                indexWeight:indexWeight,
                chartX:res.map((a)=>a.DAUID),
-               chartY:res.map((b)=>b.Index)
+               chartY:res.map((b)=>b.Index),
+               ichecked:true,
+               echecked:false
             }
             
           )
@@ -251,7 +255,9 @@ class DashBoard extends React.Component{
               iresult:result.data['pred'],
               idata:result.data['sums'],
               chartX:res.map((a)=>a.DAUID),
-              chartY:res.map((b)=>b.Index)
+              chartY:res.map((b)=>b.Index),
+              ichecked:false,
+              echecked:true
           });
 
         })
@@ -339,10 +345,10 @@ class DashBoard extends React.Component{
         
         <Setting onClick={(value)=>this.setStat(value)}/>
         <MethodSetting onClick={(methodvalue)=>this.methodStat(methodvalue)}/>
-        <TextStyle variation="subdued">Date From</TextStyle>
+        {/* <TextStyle variation="subdued">Date From</TextStyle>
         <Ranger min={2005} default={2005} max={2017} onChange={(value)=>this.handleDateChange(value)}/>
         <TextStyle variation="subdued">Date To</TextStyle>
-        <Ranger min={2005} default={2017} max={2017} onChange={(value)=>this.handleDate2(value)} />
+        <Ranger min={2005} default={2017} max={2017} onChange={(value)=>this.handleDate2(value)} /> */}
       </Card.Section>
       <Card.Section title="Items">
       <Scrollable shadow style={{height: '40vh'}}>
@@ -352,7 +358,7 @@ class DashBoard extends React.Component{
     </Card>
   </Layout.Section>
   <Layout.Section primary>
-  <Maps genres={this.state.gresult} gendata={this.state.gdata} ajaxload={this.state.ajaxLoading} intres={this.state.iresult} intdata={this.state.idata} iweight={this.state.indexWeight}/>
+  <Maps genres={this.state.gresult} ichecked={this.state.ichecked} echecked={this.state.echecked} gendata={this.state.gdata} ajaxload={this.state.ajaxLoading} intres={this.state.iresult} intdata={this.state.idata} iweight={this.state.indexWeight}/>
 
   </Layout.Section>
   <Layout.Section>

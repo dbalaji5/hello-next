@@ -59,7 +59,9 @@ let geoMapClicks2=0
           intY:[],
           ajaxload:false,
           cmpload:false,
-          iweight:{}
+          iweight:{},
+          ichecked:true,
+          echecked:false
         };
       }
       componentDidMount(){
@@ -80,7 +82,9 @@ let geoMapClicks2=0
                 intdata:this.props.intdata,
                 weight:1,
                 ajaxload:this.props.ajaxload,
-                iweight:this.props.iweight
+                iweight:this.props.iweight,
+                ichecked:this.props.ichecked,
+                echecked:this.props.echecked
             });
           
         }
@@ -307,7 +311,7 @@ let geoMapClicks2=0
              
               <LayersControl position="topright">
               
-              <LayersControl.BaseLayer name="Index" checked="true">
+              <LayersControl.BaseLayer name="Index" checked={this.state.ichecked}>
               <GeoJSON 
                 // key={this.state.gkey}
                 ref="geojson2"
@@ -325,7 +329,7 @@ let geoMapClicks2=0
                 }
             
               </LayersControl.BaseLayer>
-              <LayersControl.BaseLayer name="Interpret">
+              <LayersControl.BaseLayer name="Interpret" checked={this.state.echecked}>
               <GeoJSON 
                 key={this.state.ikey}
                 ref="geojson"
