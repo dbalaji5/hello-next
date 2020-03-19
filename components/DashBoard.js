@@ -340,9 +340,9 @@ class DashBoard extends React.Component{
         <Setting onClick={(value)=>this.setStat(value)}/>
         <MethodSetting onClick={(methodvalue)=>this.methodStat(methodvalue)}/>
         <TextStyle variation="subdued">Date From</TextStyle>
-        <Ranger min={2005} max={2017} onChange={(value)=>this.handleDateChange(value)}/>
+        <Ranger min={2005} default={2005} max={2017} onChange={(value)=>this.handleDateChange(value)}/>
         <TextStyle variation="subdued">Date To</TextStyle>
-        <Ranger min={2005} max={2017} onChange={(value)=>this.handleDate2(value)} />
+        <Ranger min={2005} default={2017} max={2017} onChange={(value)=>this.handleDate2(value)} />
       </Card.Section>
       <Card.Section title="Items">
       <Scrollable shadow style={{height: '40vh'}}>

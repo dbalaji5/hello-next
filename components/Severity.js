@@ -73,7 +73,7 @@ class Severity extends React.Component{
     render(){
           if(this.state.isLoaded){
             return(
-                <Ranger min={0} max={this.state.max} onChange={(value)=>this.props.onChange(value)}/>
+                <Ranger min={0} default={this.state.max} max={this.state.max} onChange={(value)=>this.props.onChange(value)}/>
             );
           }
           return(<p>error</p>);
