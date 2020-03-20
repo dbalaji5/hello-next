@@ -378,7 +378,7 @@ class DashBoard extends React.Component{
     </Card>
     <Card title="Rank Chart">
       <Scrollable shadow style={{height: '32vh',width:'59vh'}}>
-      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onHover={(data)=>this.handleHover(data)}/>):(<h1>Waiting for the selection</h1>)}
+      {(!this.state.ajaxLoading2)?(<Rankplot chartY={this.state.chartY} ititle={this.state.ititle} onClick={(data)=>this.handleHover(data)} onHover={(data)=>this.handleHover(data)}/>):(<h1>Waiting for the selection</h1>)}
       </Scrollable>
       </Card>
     <Card title="Explainers">

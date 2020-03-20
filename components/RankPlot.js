@@ -17,7 +17,8 @@ export default function RankPlot(props) {
         ]}
         layout={ {width: '30vh', height: '50vh', title: props.ititle}
             }
-            onHover={(data)=>props.onHover(data)}
+            // onHover={(data)=>props.onHover(data)}
+            onClick={(data)=>props.onClick(data)}
         />
     )
 }
